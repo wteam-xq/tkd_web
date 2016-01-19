@@ -2,4 +2,5 @@
 #### 三国杀faq 第三版（模块化开发／前端）
 
 
-* 技术点： bootstrap gulp webpack nodejs
+* 技术点： bootstrap vue gulp webpack nodejs
+* 无聊玩耍项目2
