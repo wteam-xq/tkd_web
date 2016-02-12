@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/wteam-xq/tkd_web/issues"
   },
-  "homepage": "https://github.com/wteam-xq/tkd_web"
+  "homepage": "https://github.com/wteam-xq/tkd_web",
+  "dependencies": {
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7"
+  }
 }

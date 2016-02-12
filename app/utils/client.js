@@ -153,3 +153,4 @@ var client = function() {
         system: system
     };
 } ();
+module.exports = client;
