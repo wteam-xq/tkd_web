@@ -18,9 +18,10 @@ $(function(){
   	// 引入图片
     _loadImg.src = loadingImg;
     $noCanvasTips.find('.tkd-thumbnail').append(_loadImg);
-    $noCanvasTips.show();
     if(browser.ie && parseInt(browser.ver, 10) < 9){
       $noCanvasTips.show();
     }
+    // 首页请求 卡牌数据
+    
   }
 });

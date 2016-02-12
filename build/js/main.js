@@ -49,8 +49,8 @@
 	  __webpack_require__(1);
 	  // 公用变量
 	  var $main_menu = $('#mainmenu'),
-	  	  Client = __webpack_require__(5);
-	  var loadingImg = __webpack_require__(6);
+	  	  Client = __webpack_require__(7);
+	  var loadingImg = __webpack_require__(8);
 	  	  
 	  // 初始化函数
 	  init();
@@ -64,10 +64,11 @@
 	  	// 引入图片
 	    _loadImg.src = loadingImg;
 	    $noCanvasTips.find('.tkd-thumbnail').append(_loadImg);
-	    $noCanvasTips.show();
 	    if(browser.ie && parseInt(browser.ver, 10) < 9){
 	      $noCanvasTips.show();
 	    }
+	    // 首页请求 卡牌数据
+	    
 	  }
 	});
 
@@ -81,7 +82,7 @@
 	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -106,7 +107,7 @@
 
 
 	// module
-	exports.push([module.id, ".noCanvasTips{ display: none; }\n.tkd-thumbnail{ text-align: center; }", ""]);
+	exports.push([module.id, ".noCanvasTips{ display: none; }\n.tkd-thumbnail{ text-align: center; }\nhtml,canvas,body{margin:0px;padding:0px;}\na:active, a:hover{outline: 0;}\n/*进度条插件*/\n.jCProgress {position: absolute;z-index: 9999999;}\n\n.jCProgress > div.percent {font: 18px/27px 'BebasRegular', Arial, sans-serif;color:#ebebeb;text-shadow: 1px 1px 1px #1f1f1f;position:absolute;margin-top:40px;margin-left:22px;text-align: center;width:60px;}\n/*首次加载出现的loading...*/\n.loading{display: block;width: 100%;text-align: center;padding: 100px;}\n/*自定义进度条样式*/\n#progress{position:fixed;top:40%;padding:0 50%;width:100%;}\n#progress .jCProgress{margin-left: -52px;}\n#start{position:fixed;top:40%;padding:0 10%;width:100%;}\n#mainmenu{width: 100%;background-color: #CFBAAA;}\n.mainmenu, .person-info, .search-info, .noCanvasTips, .rule-detail, .card-types, .card-detail, .heros-detail{display: none;position: relative;}\n\n.menu-nav{width:100%;margin: 0px 0px 0px !important;background-color: #CFBAAA;}\n.menu-nav li{padding: 0px !important;text-align: center !important;border-color: #357ebd !important;}\n\n.list-item-img{margin-right: 5px;width:65px;height:50px;background-size:65px 50px;}\n.dropup .list-group{margin-bottom: 0px !important;}\n.str-btn{border-bottom: 1px solid #ccc !important;}\n.dropup.str-btn{border-bottom: 0px solid #ccc !important;}\n.btn-pairs{width: 100% !important;border: 1px solid #ccc !important;}\n.btn-app, .btn-pairs{background-color: #FCF8E3 !important;}\n.btn-app:hover, .btn-pairs:hover{background-color: #FAF2CC !important;}\n.tkd-dropdown-menu{width: 100% !important;text-align: center !important; }\n.tkd-dropdown-menu a{padding: 10px 16px !important;}\n\n.mainmenu .logo-brand{padding: 0px !important;line-height: 50px !important;}\n.logo{width:90px;height:35px;background-size: 90px 35px;}\n.logo-brand{padding: 0px !important;}\n.navbar-form{border-width: 0px;padding: 10px 5px !important;margin-right: 0px !important;}\n.navbar-form .form-group{padding: 0px !important;}\n.navbar .navbar-header{padding: 10px 10px;}\n.tkd-navbar{top: 0;border-width: 0 0 1px;position: fixed;right: 0;left: 0;z-index: 1030;-webkit-transform: translate3d(0,0,0);-o-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}\n.sub-navbar{top: 0 !important;border-width: 0 0 1px;position: fixed !important;right: 0;left: 0;z-index: 1030;}\n.navbar{margin:0px auto !important;width:100%;}\n.tkd-thumbnail{display: block;padding: 4px;margin-bottom: 20px;background-color: #fff;border: 1px solid #ddd;text-align: center;}\n\n/*置顶小按钮*/\n#backtotop{cursor: pointer;height: 50px;position: fixed;bottom: 100px;right: -60px;z-index: 9999;-moz-transition: all 1s ease;-webkit-transition: all 1s ease;-o-transition: all 1s ease;transition: all 1s ease;}\n#backtotop.showme{right: 12px;-moz-transform: scale(1) rotate(-360deg) translate(0px);-webkit-transform: scale(1) rotate(-360deg) translate(0px);-o-transform: scale(1) rotate(-360deg) translate(0px);transform: scale(1) rotate(-360deg) translate(0px);}\n#backtotop .bttbg{width: 50px;height: 50px;background: url(" + __webpack_require__(4) + ") no-repeat 0 0;background-size: 50px 100px;}\n#backtotop .bttbg:hover{background-position: left bottom;}\n.tkd-search{position: absolute !important;top: 10px !important;right: 20px !important;}\n.back-ico{line-height: 50px !important;font-size: 1.4em;}\n.search-cancel, .search-submit{font-weight: bold;text-align: center;color:#FD6D9E;line-height: 50px;font-size: 1.2em;cursor: pointer;padding-left: 0px !important;}\n.search-submit{display: none;}\n.search-info .form-group{margin: 8px 0px !important;padding-right: 0px !important;}\n.search-info input{padding-left: 25px !important;}\n.search-info .search-ico{position: absolute !important;top: 10px !important;left: 25px !important;}\n.search-info .search-close{position: absolute !important;top:3px !important;right: 10px !important; font-size:30px !important;}\n.search-item{border-bottom: 1px solid #ccc;}\n.loading-cont{text-align: center;background-color: #fff;width:100%;z-index: 999;}\n.loading-ico{width: 85px;height: 85px;background: url(" + __webpack_require__(5) + ") no-repeat 0 0;margin: 0 auto;}\n.items-type{text-align: center;background-color: #f8f8f8;color: #FD6D9E;padding: 10px 16px;font-size: 18px;line-height: 1.33;}\n.heros-dropdownmenu.row{margin: 0px !important;background-color: #FCF8E3;}\n.sub-page.row{margin: 0px !important;background-color: #fff;min-height: 300px;}\n.heros-dropdownmenu .dropdown{padding: 0px !important;}\n.heros-list{min-height: 550px;}\n.search-tips{text-align: center;}\n.rule-detail{text-align: left;}\n.sub-content{color: #666;font-size: 18px;line-height: 1.8em;}\n.card-img{background-size:200px 281px;}\n.content-heading{font-size: 18px;font-weight: bold;}\n.content-pager{position: fixed;bottom: 35px;width: 90%;font-size: 20px;margin: 0 5%;}\n.pager-tips{margin-left: 1em;}\n.blue{color: #2820DE;}\n.red{color: #CC0000;}\n\n/*二维码小图标*/\n#rightDocker{position: fixed;top: 50%;margin-top: -40px;right: 0;}\n#rightDockerBtn{border-radius: 4px 0 0 4px;}\n#rightDockerBtn i{font-size: 28px;margin-top: 2px;display: block;}\n#dockerPopover{position: fixed;}\n.popover.left .arrow{top: 50%;right: -11px;margin-top: -11px;border-right-width: 0;border-left-color: #999;border-left-color: rgba(0,0,0,.25);}\n.docker-right{vertical-align: middle;}\n.popover-content td{border-top: 0px !important;background-color: #ccc;}\n.popover-content .heading{text-align: center;color: #428bca;margin-bottom: 5px;}\n.icon-mobile-phone{font-size: 28px;color: #fff;background: #145CCD;display: inline-block;width: 36px;line-height: 36px;height: 36px;border-radius: 25px;vertical-align: middle;margin-right: 10px;}\n.docker-show{top: 25%; left: 1060px; display: block;}\n\n/*metro 风格颜色块*/\n.tile{display: block;cursor: pointer;-webkit-perspective: 0;-webkit-transform-style: preserve-3d;-webkit-transition: -webkit-transform .2s;float: left;min-width: 75px;min-height: 75px;text-align: center;opacity: .75;background-color: #2e8bcc;z-index: 1;border: 4px solid #fff;color: #fff;}\n.tile:hover{opacity: 1;}\n.tile.tile-medium{width:150px;height: 150px;}\n.tile-blue{background-color: #2e8bcc;}\n.tile-green{background-color: #393;}\n.tile-red{background-color: #e51400;}\n.tile-yellow{background-color: #ffc40d;}\n.tile-pink{background-color: #e671b8;}\n.tile-purple{background-color: #7b4f9d;}\n.tile-lime{background-color: #8cbf26;}\n.tile-magenta{background-color: #ff0097;}\n.tile-teal{background-color: #00aba9;}\n.tile-turquoise{background-color: #1abc9c;}\n.tile-green-sea{background-color: #16a085;}\n.tile-emerald{background-color: #2ecc71;}\n.tile h1, .tile h2, .tile h3, .tile h4, .tile h5, .tile h6{color: #fff;-webkit-user-select: none;}\n.tile a:hover{text-decoration: none;}\n/*二维码 显示隐藏样式*/\n.popover.fade{display: none;}\n.popover.fade.in{display: block;}\n", ""]);
 
 	// exports
 
@@ -169,6 +170,18 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAABkCAYAAADE6GNbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABUtJREFUeNrsm2tMHFUUx//sCxaryZaakhZitGlMTLQaX20Ta9MoRGqJ0gSa4qt+MD4iPoqY2sQPRr/0A/h+BLWtBSNut7FaKKWV+GiRpF+aajS2pRZYoAldll1gd3F3drxnmEHcHcrsMosz23vIze7szN57fveec+/M3T8AN2NZjspnNlZyWbGzYpnlmv/DRFbirERZmRRFMSYB5OSoQuU2NDTc6vP5WqPR6EXRYEY+kW/ko9zZqp1sd7vda2Ox2KhocCMfPR7POjlqkuwqRtsumsT8fn8H83mRWo64BEHotVgsV5shuePxeMhqtRaxt37IyayYxSwQsrP5M/23ZMv0a0ua40TRHOtGwrSbNSPCQTgIB7lCQPj0e0WGFvWe2nODaUDI+cjkJL7/4WecOXee7o8WLkf0hAhHInj7g0b4RgKICTFUPfwg1q6+k+5czQGiQLzz4acIjIXgdDoRZ5PI/oNt0vlMwFgyCTEanIDNZpNmQvo8z5kvwXR1n9Q9zHSdfsm5aYjAuHQciYSx9NoC+ANBCEIcuXnOpJHRY8rXLbRmQvhHxyCyvzy7HU9Ub8WNK1cgFA7j0OEO/HLyFBx2B9w6w8ycEwtYZZfY4+48ICixg1Jib1i3BuVlpZKDipN0Xb93AE0tB3BpZBTUVuVDG7Hm7jv+c50WY4+5FK5L2FufLiAKRMP7jRj2jbAwWoxHqjajuGh5Uk8r6wmVb1uP4NiPJyiWsWVzecowuoIoTn3UuAe//3kWJRvuRfnGf0dhNqeU742M+LH3Szd6/rqA6sqKlGDmBInFYppHgpzZ09TCwmUQ2x6tQtHyZZrjfebofNfWgdb2Y3i8uhKr77pdEwzNhrqAUI8QRMFilzQKCkCqSUsg1CnegUHs3teCTWUlWHXzTXOuM7qAUOOnf/sDSwpcKY2CltGh2xmayRx2+8KMiNKwnit0KnUmgqS9jqQTRpmskz+P8EddPiIchINwEA6SrdMvu8WJj5nFcfoxFFMCgiSQaDAY7Kbbc6Mb+ch8PYEpFUQSyGRnZ+eb7DUgP30ZDoB8kjs6IPs6OdtGhCLhaI9Go8MGlHAMk29qEo7LiWoc8nkjiWqo/A0VUc28nZz3fpSGEL5cG0ZMAW5ZZVxBZwoFHVv+RUEQDFnINzUF3UwiUtB5XC5XqdFvHCmcAoHAUeZrBTscTwSRFHTs1SziM66g40+IHISDcBAOwkE4CAdBlijoQqEw3AcO4tTpX82roJuYCOHFup3o7fdKPznX1jyDB0rvN5eCjiBeenUnvINDcDhypS2d+vc+kc5nAsaSSYj+gSEWTtbpfSm7wyHBHD5yVPcws2QMwjvEji2IRaMoXlYIh82GuCDAZrdnBMaWCYg+76C05+G6ZhHqXn4et626BePjE9i9r1nSaVmtNgbzsa5hlqRFSafSaQhKbO8A6/k4tlZV4MnHqpOEZ2d7zmNX/bvo7RuQALbXPJ0WjCyzml1Uk2qF07PTK6/hQp8X119XjLrtNVi54gZVbYmypnz+RTOav9ovfVb7wrMpwySCIAEk5e0Zsh2vvyGuLy0XP9vbJB3PtZ1E58mGhi6KNbU7xPUlm8S29g4xlfbFqR4qUINMGYTsrV314rannhPPnOvRBKEGRB1wz31lEozW7+sGQg0ShNZRmMsp6gjqkJ+Od2mqKxEkrRyhGD/e1Y3CwqVSLugy68i587XnG5SxfMnPdy5MslOjmdiR1FpvIkjaK1KmtlW5go6DcBAOwkE4CAfhINmsoDOD2oZ8nFNBx0gDRoaR/7+EK+iMYMZW0OkRalll/wgwAAnsKJ5cTRkxAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/loading-16b79d5f5d6ed6f88b1bf63d23d87df6.gif";
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -422,7 +435,7 @@
 
 
 /***/ },
-/* 5 */
+/* 7 */
 /***/ function(module, exports) {
 
 	var client = function() {
@@ -583,7 +596,7 @@
 	module.exports = client;
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "images/404-c645b51786f76343852a54dff74b8381.gif";
