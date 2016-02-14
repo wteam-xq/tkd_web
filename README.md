@@ -2,4 +2,4 @@
 #### 三国杀faq 第三版（模块化开发／前端）
 
 
-* 技术点： bootstrap vue webpack nodejs
+* 技术点： bootstrap webpack nodejs
