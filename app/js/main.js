@@ -4,7 +4,7 @@ $(function(){
   // 公用变量
   var $main_menu = $('#mainmenu'),
   	  Client = require('../utils/client.js');
-  var ADMIN_URL = 'localhost:3001';
+  var ADMIN_URL = 'localhost:8001';
   	  
   // 初始化函数
   init();
@@ -28,9 +28,13 @@ $(function(){
       $noCanvasTips.show();
     }
     $loadingGif.show();
+
     // 请求首页数据(ajax请求)
     $.ajax({
       url:ADMIN_URL + "/tkd_rules", 
+      beforeSend: function(xhr){
+        xhr.withCredentials = true;
+      },
       success:function(result){
         if (result){
           $loadingGif.hide();
@@ -41,7 +45,6 @@ $(function(){
       }
     });
   }
-
   // 显示主面板
   // activeType: "rule" (card heros strategy)  当前显示类型
   // datas: []  类型数据
@@ -74,7 +77,6 @@ $(function(){
   }
   // 主面板显示规则UI
   function showRuleContent(ruleData){
-
+    console.log('ruleData:' + ruleData);
   }
-
 });

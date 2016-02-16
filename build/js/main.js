@@ -50,7 +50,7 @@
 	  // 公用变量
 	  var $main_menu = $('#mainmenu'),
 	  	  Client = __webpack_require__(7);
-	  var ADMIN_URL = 'localhost:3001';
+	  var ADMIN_URL = 'localhost:8001';
 	  	  
 	  // 初始化函数
 	  init();
@@ -87,7 +87,6 @@
 	      }
 	    });
 	  }
-
 	  // 显示主面板
 	  // activeType: "rule" (card heros strategy)  当前显示类型
 	  // datas: []  类型数据
@@ -120,9 +119,9 @@
 	  }
 	  // 主面板显示规则UI
 	  function showRuleContent(ruleData){
-
+	    
+	    console.log('ruleData:' + ruleData);
 	  }
-
 	});
 
 /***/ },
