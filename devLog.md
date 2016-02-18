@@ -11,5 +11,7 @@
 * 问题：出现跨域提示
 * 解决：设置 webpack-dev-server(没使用webpack 使用 虚拟服务器：tomcat xampp), 所谓的同域：是指 协议，域名，端口都必须相同！
 * [跨源资源共享 Cross Origin Resource Sharing(CORS)](http://twlidong.github.io/blog/2013/12/22/kua-yuan-zi-yuan-gong-xiang-cross-origin-resource-sharing-cors/)
+* 2016-02-18 问题：为什么jq ajax请求总是不能CORS跨域，而原生xhr对象请求能成功？
+* 解决：
 
 ### 遗留bug:

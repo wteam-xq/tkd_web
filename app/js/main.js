@@ -17,6 +17,7 @@ $(function(){
         loadingGif = require('../images/loading.gif');
     var _supportImg = document.createElement('img'),
         _loadingGif = document.createElement('img');
+    var ajaxOptions = null, serviceResourceUrl = 
     // 低版本浏览器时出现提示
     browser = Client.browser;
   	// 引入图片
@@ -30,20 +31,52 @@ $(function(){
     $loadingGif.show();
 
     // 请求首页数据(ajax请求)
-    $.ajax({
-      url:ADMIN_URL + "/tkd_rules", 
-      beforeSend: function(xhr){
-        xhr.withCredentials = true;
-      },
-      success:function(result){
-        if (result){
-          $loadingGif.hide();
-          showMainPanel({"activeType":"rule", "datas":result});
-        } else {
-          alert('请求规则数据异常!');
-        }
+    // $.get(ADMIN_URL + "/tkd_rules", successCallback);
+    ajaxOptions = {
+        url: ADMIN_URL + "/tkd_rules",
+        type: "get",
+        dataType: "json",
+        success: successCallback,
+        error: failedCallback,
+        xhrFields: { withCredentials: true }
+    };
+    $.ajax(ajaxOptions);
+    function successCallback(result){
+      if (result){
+        $loadingGif.hide();
+        showMainPanel({"activeType":"rule", "datas":result});
+      } else {
+        alert('请求规则数据异常!');
       }
-    });
+    }
+    function failedCallback(){
+      alert('请求规则出错了！');
+    }
+    // var xhr = new XMLHttpRequest();
+    // var url = 'http://localhost:8001/tkd_rules';
+    // crossDomainRequest();
+    // function crossDomainRequest() {
+    //   if (xhr) {
+    //     xhr.open('GET', url, true);
+    //     xhr.onreadystatechange = handler;
+    //     xhr.send();
+    //   } else {
+    //     console.log("不能创建 XMLHttpRequest");
+    //   }
+    // }
+    // function handler(evtXHR) {
+    //   if (xhr.readyState == 4) {
+    //     if (xhr.status == 200) {
+    //       var response = xhr.responseText;
+    //       console.log("结果：" + response);
+    //     } else {
+    //       console.log("不允许跨域请求。");
+    //     }
+    //   }
+    //   else {
+    //     console.log("执行状态 readyState：" + xhr.readyState);
+    //   }
+    // }
   }
   // 显示主面板
   // activeType: "rule" (card heros strategy)  当前显示类型
