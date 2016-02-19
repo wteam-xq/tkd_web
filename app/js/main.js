@@ -2,9 +2,10 @@
 $(function(){
   require("../css/main.css");
   // 公用变量
-  var $main_menu = $('#mainmenu'),
+  var $mainMenu = $('#mainmenu'),
+      $paenlWrapper = $('#paenl_wrapper'),
   	  Client = require('../utils/client.js');
-  var ADMIN_URL = 'localhost:8001';
+  var ADMIN_URL = 'http://localhost:8001';
   	  
   // 初始化函数
   init();
@@ -29,16 +30,13 @@ $(function(){
       $noCanvasTips.show();
     }
     $loadingGif.show();
-
     // 请求首页数据(ajax请求)
-    // $.get(ADMIN_URL + "/tkd_rules", successCallback);
     ajaxOptions = {
-        url: ADMIN_URL + "/tkd_rules",
+        url: ADMIN_URL + '/tkd_rules',
         type: "get",
         dataType: "json",
         success: successCallback,
-        error: failedCallback,
-        xhrFields: { withCredentials: true }
+        error: failedCallback
     };
     $.ajax(ajaxOptions);
     function successCallback(result){
@@ -52,31 +50,6 @@ $(function(){
     function failedCallback(){
       alert('请求规则出错了！');
     }
-    // var xhr = new XMLHttpRequest();
-    // var url = 'http://localhost:8001/tkd_rules';
-    // crossDomainRequest();
-    // function crossDomainRequest() {
-    //   if (xhr) {
-    //     xhr.open('GET', url, true);
-    //     xhr.onreadystatechange = handler;
-    //     xhr.send();
-    //   } else {
-    //     console.log("不能创建 XMLHttpRequest");
-    //   }
-    // }
-    // function handler(evtXHR) {
-    //   if (xhr.readyState == 4) {
-    //     if (xhr.status == 200) {
-    //       var response = xhr.responseText;
-    //       console.log("结果：" + response);
-    //     } else {
-    //       console.log("不允许跨域请求。");
-    //     }
-    //   }
-    //   else {
-    //     console.log("执行状态 readyState：" + xhr.readyState);
-    //   }
-    // }
   }
   // 显示主面板
   // activeType: "rule" (card heros strategy)  当前显示类型
@@ -86,9 +59,11 @@ $(function(){
         aData = opt.datas;
     var logoUrl = require('../images/logo.png'),
         $logoDom = $('<img class="logo" alt="logo">');
+    var navbar_height = 0;
     // 插入图片
     $logoDom.attr('src', logoUrl);
-    $main_menu.find('#to-person-info').append($logoDom);
+    $mainMenu.find('#to-person-info').append($logoDom);
+    $paenlWrapper.show();
     switch(aType){
       case 'rule':
         showRuleContent(aData);
@@ -106,10 +81,28 @@ $(function(){
         showRuleContent(aData);
         break;
     }
-    $main_menu.show();
+    $mainMenu.show();
+    // 主页面导航条高度设置（防止被遮住）
+    navbar_height = $mainMenu.find('div.tkd-navbar').css('height');
+    $mainMenu.css({'padding-top': navbar_height});
   }
   // 主面板显示规则UI
-  function showRuleContent(ruleData){
-    console.log('ruleData:' + ruleData);
+  function showRuleContent(data){
+    var ruleList = data.rules.ruleList,
+        i, len, ruleObj = null, 
+        itemHtml, itemHtmls = '';
+    var $rule = $('#rule');
+    $rule.empty();
+    for(var i = 0, len = ruleList.length; i < len; i++){
+      ruleObj = ruleList[i];
+      itemHtml = '<a href="##" title="'+ ruleObj.title +'" class="list-group-item list-group-item-warning" data-id="' + ruleObj._id + '">' + 
+        '<img class="pull-left list-item-img" src="' + ADMIN_URL + ruleObj.ico + '" alt="' + ruleObj.title + '" >' + 
+        '<h3 class="list-group-item-heading">' + ruleObj.title + '</h3>' + 
+        '<p class="list-group-item-text">' + ruleObj.desc + '</p>' + 
+      '</a>';
+      itemHtmls += itemHtml;
+    }
+    $rule.append(itemHtmls);
   }
+
 });
