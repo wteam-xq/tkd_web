@@ -3,6 +3,7 @@ $(function(){
   require("../css/main.css");
   // 公用变量
   var $mainMenu = $('#mainmenu'),
+      $body = $('body'),
       $paenlWrapper = $('#paenl_wrapper'),
       PageManage = require('../common/pageManage.js'),
   	  Client = require('../utils/client.js');
@@ -122,6 +123,53 @@ $(function(){
   function renderSelfInfo($prevPanel){
     var selfHtml = '<div class="tkd-navbar person-info" id="person-info"><div class="navbar navbar-default row" role="navigation"><div class="navbar-header col-xs-5 col-md-3 pull-left">  　<a href="##" class="navbar-brand logo-brand"><span class="glyphicon glyphicon-chevron-left back-ico" data-btntype="cancel" id="back-index"></span></a>    　</div><form class="navbar-form navbar-right col-xs-7 col-md-4 row" role="search"><div class="form-group pull-left col-xs-12"><span class="glyphicon glyphicon-search tkd-search"></span><input type="text" data-parentId="person-info" class="form-control pull-right input-search" placeholder="搜索卡牌、攻略、规则"></div></form></div><div class="panel panel-warning"><div class="panel-heading">三国杀FAQ &nbsp;&nbsp;应用信息</div><ul class="list-group"><li class="list-group-item"><strong>作者: &nbsp;</strong><span>wteam-xq</span></li><li class="list-group-item"><strong>邮箱: &nbsp;</strong><span>857609086@qq.com</span></li><li class="list-group-item"><strong>QQ: &nbsp;</strong><span>857609086</span></li><li class="list-group-item"><strong>博客: &nbsp;</strong><a href="http://www.cnblogs.com/wteam-xq/">http://www.cnblogs.com/wteam-xq/</a></li><li class="list-group-item"><strong>知乎: &nbsp;</strong><a href="http://www.zhihu.com/people/xiao-qiang-85"> http://www.zhihu.com/people/xiao-qiang-85</a></li><li class="list-group-item"><strong>github: &nbsp;</strong><a href="https://github.com/wteam-xq"> https://github.com/wteam-xq</a></li></ul></div></div>';
     $prevPanel.after(selfHtml);
+  }
+  /**
+   * 大提示
+   * @param {object} options
+   *   @param {string} options.msg 提示内容
+   *   @param {number} options.type 提示类型: 0 (默认) 失败   1 成功
+   *   @param {string} options.className 自定义样式
+   *   @param {boolean} options.showMask 是否显示遮罩层
+   */
+  function pageMsg(options){
+      var pageTipsMsg = null, 
+          ts = parseInt( (new Date().getTime())/1000, 10 ),
+          tipType = options.type?options.type: '0',
+          className = options.className?options.className: '';
+      $body.append(renderHtml({
+          tipsType: tipType,
+          str: options.msg,
+          ts: ts,
+          className: className
+      });
+      pageTipsMsg = $body.find('#pageTip' + ts);
+      if (options.showMask) {
+          pageTipsMsg.prev('.a_r_guard_mask').css({
+              'width': $(window).width(),
+              'height': $(window).height(),
+              'z-index': '2000'
+          });
+      }
+      pageTipsMsg.show();
+      setTimeout(function (){
+          pageTipsMsg.animate({
+              'opacity': 0
+          },{
+              duration: 1000,
+              callback: function (){
+                  pageTipsMsg.prev('.a_r_guard_mask').remove();
+                  pageTipsMsg.remove();
+              }
+          });
+      }, 1000);
+      function renderHtml(opt){
+        var htmlStr = '<div class="a_r_guard_mask"></div>' +
+        '<div class="page_tips_msg ' + opt.className +'" id="pageTip'+ opt.ts +'">' +
+          '<span class="l_icon pagetips_icon_'+ opt.tipsType +'"></span>' + '<span>'+ opt.str +'</span>' +
+        '</div>';
+        return htmlStr;
+      }
   }
 
 });
