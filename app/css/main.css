@@ -103,3 +103,11 @@ a:active, a:hover{outline: 0;}
 /*二维码 显示隐藏样式*/
 .popover.fade{display: none;}
 .popover.fade.in{display: block;}
+/*大提示弹出层*/
+.l_icon{background: url('http://file3.qf.56.itc.cn/style/live/v2/img/icon_bg_v.2.png?v=20151127') no-repeat; _background: url('http://file3.qf.56.itc.cn/style/live/v2/img/ie6_icon_bg_v.2.png?v=20151127') no-repeat}
+.a_r_guard_mask{ position:absolute; top:0; left:0; width:100%; background: #000; opacity: 0.5; filter:alpha(opacity=50); }
+.page_tips_msg{ display:none; font-size:18px; width:340px; background-color:#fff; text-align: center; position:absolute; left:38%; top:28%; z-index:2001; padding:20px 10px; }
+.page_tips_msg .pagetips_icon_0,
+.page_tips_msg .pagetips_icon_1{ display:inline-block; width:45px; height:35px; margin:0px 8px -10px 0px; }
+.page_tips_msg .pagetips_icon_0{ background-position: -43px -539px; }
+.page_tips_msg .pagetips_icon_1{ background-position: 0px -539px; }

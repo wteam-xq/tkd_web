@@ -137,6 +137,8 @@ $(function(){
           ts = parseInt( (new Date().getTime())/1000, 10 ),
           tipType = options.type?options.type: '0',
           className = options.className?options.className: '';
+      // 雪碧图地址
+      var spritIcon = '';
       $body.append(renderHtml({
           tipsType: tipType,
           str: options.msg,
