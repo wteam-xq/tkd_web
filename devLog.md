@@ -5,6 +5,9 @@
 * 2016-02-20 完成滑动公共模块， 添加个人信息面板；
 * 2016-02-21 添加提示弹层（网络错误提示等）；
 * 2016-02-24 处理提示弹出层图标（雪碧图）, 搜索webpack处理雪碧图发现的[gulp + webpack 构建多页面前端项目](https://segmentfault.com/a/1190000003969465?_ea=441560)
+* 2016-02-25 CSS Sprites，base64编码 理解: 1.[css Sprites](http://baike.baidu.com/link?url=lN45Y6tRGnuyJd8FxIJeWCKnBk90DwgGNiz4k2B653lqSURYfobyS1GIkkRSNDAdvlbWWL7GGFjXAsMXotdNrK)就是我们说的雪碧图啦；2.css base64, 图片直接存储在样式表中；
+* base 64优点： 1.减少了HTTP请求； 2.避免文件跨域的问题； 3.解决没有图片更新要重新上传，还要清理缓存的问题；
+缺点：1.ie6 ie7不支持；2.增加了CSS文件的尺寸；（ase64编码图片本质上是将图片的二进制大小以一些字母的形式展示，例如一个1024字节的图片，base64编码后至少1024个字符，这个大小会被完全嵌入到CSS文件中）
 
 
 ### 开发日志
