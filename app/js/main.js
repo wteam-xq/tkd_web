@@ -45,11 +45,11 @@ $(function(){
         $loadingGif.hide();
         showMainPanel({"activeType":"rule", "datas":result});
       } else {
-        alert('请求规则数据异常!');
+        pageMsg({msg:"请求规则数据异常!", type:0, showMask:true});
       }
     }
     function failedCallback(){
-      alert('请求规则出错了！');
+      pageMsg({msg:"请求规则出错了！", type:0, showMask:true});
     }
   }
   // 显示主面板
@@ -133,36 +133,33 @@ $(function(){
    *   @param {boolean} options.showMask 是否显示遮罩层
    */
   function pageMsg(options){
-      var pageTipsMsg = null, 
+      var $pageTipsMsg = null, 
           ts = parseInt( (new Date().getTime())/1000, 10 ),
           tipType = options.type?options.type: '0',
           className = options.className?options.className: '';
-      // 雪碧图地址
-      var spritIcon = '';
-      $body.append(renderHtml({
+      var spriteIcon = '';
+      $body.append( renderHtml({
           tipsType: tipType,
           str: options.msg,
           ts: ts,
           className: className
-      });
-      pageTipsMsg = $body.find('#pageTip' + ts);
+      }) );
+      $pageTipsMsg = $body.find('#pageTip' + ts);
       if (options.showMask) {
-          pageTipsMsg.prev('.a_r_guard_mask').css({
+          $pageTipsMsg.prev('.a_r_guard_mask').css({
               'width': $(window).width(),
               'height': $(window).height(),
               'z-index': '2000'
           });
       }
-      pageTipsMsg.show();
+      $pageTipsMsg.show();
       setTimeout(function (){
-          pageTipsMsg.animate({
+          $pageTipsMsg.animate({
               'opacity': 0
-          },{
-              duration: 1000,
-              callback: function (){
-                  pageTipsMsg.prev('.a_r_guard_mask').remove();
-                  pageTipsMsg.remove();
-              }
+          }, 1000, 
+          function (){
+              $pageTipsMsg.prev('.a_r_guard_mask').remove();
+              $pageTipsMsg.remove();
           });
       }, 1000);
       function renderHtml(opt){
@@ -173,5 +170,12 @@ $(function(){
         return htmlStr;
       }
   }
+
+  // 全局变量
+  window.tkdGlobalObj = {
+    testPageMsg: function(){
+      pageMsg({msg:"测试内容。。。", type:0, showMask:true});
+    }
+  };
 
 });

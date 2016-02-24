@@ -4,7 +4,7 @@
 * cdn地址：http://www.bootcdn.cn/
 * 2016-02-20 完成滑动公共模块， 添加个人信息面板；
 * 2016-02-21 添加提示弹层（网络错误提示等）；
-* 2016-02-23 处理提示弹出层图标（雪碧图）
+* 2016-02-24 处理提示弹出层图标（雪碧图）, 搜索webpack处理雪碧图发现的[gulp + webpack 构建多页面前端项目](https://segmentfault.com/a/1190000003969465?_ea=441560)
 
 
 ### 开发日志
@@ -17,5 +17,6 @@
 * [跨域解决方案汇总](http://www.cnblogs.com/think/archive/2010/06/23/1763616.html)
 * 2016-02-18 问题：为什么jq ajax请求总是不能CORS跨域，而原生xhr对象请求能成功？
 * 解决：因为使用jquery时的URL没写对，`ADMIN_URL = 'localhost:8001'`改成`ADMIN_URL = 'http://localhost:8001'`
+
 
 ### 遗留bug:
