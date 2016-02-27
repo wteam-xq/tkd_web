@@ -94,6 +94,24 @@ var PageManage = {
 	        $main.attr({'style':'display: block; padding-top:' + padding_height});
 	      }, 200);
 	    });
+	},
+	// 生成头部导航页
+	createAppHead: function($target_dom){
+		var p_id = '',
+	    _html = '';
+
+	    if ($target_dom == null){
+	      return false;
+	    }
+	    p_id = $target_dom.attr('id');
+	    _html = '<div class="navbar sub-navbar navbar-default row"role="navigation"><div class="navbar-header col-xs-5 col-md-3 pull-left"><a href="##"class="navbar-brand logo-brand"><span class="glyphicon glyphicon-chevron-left back-ico"data-btntype="cancel"id="back-index"></span></a></div><form class="navbar-form navbar-right col-xs-7 col-md-4 row"role="search"><div class="form-group pull-left col-xs-12"><span class="glyphicon glyphicon-search tkd-search"></span><input type="text" data-parentId="'+ p_id +'"class="form-control pull-right input-search"placeholder="搜索卡牌、攻略、规则"></div></form></div>';
+	    $target_dom.empty();
+	    $target_dom.append(_html);
+	    // 添加内边距(页面渲染完成执行)
+	    setTimeout(function(){
+	      $target_dom.css({'padding-top': $target_dom.find('div.sub-navbar').css('height')});
+	    },10);
+	    return $target_dom;
 	}
 };
 module.exports = PageManage;

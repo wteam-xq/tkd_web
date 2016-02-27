@@ -5,6 +5,7 @@ $(function(){
   var $mainMenu = $('#mainmenu'),
       $body = $('body'),
       $paenlWrapper = $('#paenl_wrapper'),
+      $loadingGif = $('#loading'),
       PageManage = require('../common/pageManage.js'),
   	  Client = require('../utils/client.js');
   var ADMIN_URL = 'http://localhost:8001';
@@ -13,7 +14,6 @@ $(function(){
   // 初始化
   function init(){
   	var browser = null,
-        $loadingGif = $('#loading'),
         $noCanvasTips = $('#noCanvasTips');
     var supportImg = require('../images/404.gif'),
         loadingGif = require('../images/loading.gif');
@@ -41,11 +41,11 @@ $(function(){
     };
     $.ajax(ajaxOptions);
     function successCallback(result){
-      if (result){
+      if (result && !result.error){
         $loadingGif.hide();
-        showMainPanel({"activeType":"rule", "datas":result});
+        showMainPanel({"activeType":"rule", "datas":result.rules});
       } else {
-        pageMsg({msg:"请求规则数据异常!", type:0, showMask:true});
+        pageMsg({msg:"请求规则数据异常：" + result.status, type:0, showMask:true});
       }
     }
     function failedCallback(){
@@ -91,7 +91,7 @@ $(function(){
   }
   // 主面板显示规则UI
   function showRuleContent(data){
-    var ruleList = data.rules.ruleList,
+    var ruleList = data.ruleList,
         i, len, ruleObj = null, 
         itemHtml, itemHtmls = '';
     var $rule = $('#rule');
@@ -111,9 +111,37 @@ $(function(){
   }
   // 显示规则详情
   function showRuleDetail(e){
-    var content = "";
+    var content = "",
+        _id = '',
+        $target = $(e.target);
     e.preventDefault();
-    pageMsg({msg:"显示规则详情", type:1, showMask:true});
+    if(!$target.hasClass('list-group-item')){
+      $target = $target.parents('.list-group-item');
+    }
+    _id = $target.attr('data-id');
+
+    // 请求规则详情数据
+    $.get(ADMIN_URL + '/tkd_rule', {id:_id}, function(result){
+      var $ruleDetailPanel = $paenlWrapper.find('#rule-detail'),
+          detailData = null,
+          _html = "";
+      if(result && !result.error){
+        detailData = result.data;
+        // console.log(result.data);
+        if($ruleDetailPanel.length == 0){
+          $paenlWrapper.append('<div class="tkd-navbar rule-detail" id="rule-detail"><div class="panel panel-warning">规则详情页</div></div>');
+          $ruleDetailPanel = $paenlWrapper.find('#rule-detail');
+        }
+        PageManage.createAppHead($ruleDetailPanel);
+        _html = '<div class="panel panel-warning"><div class="panel-heading content-heading"></div><div class="sub-content panel-body"></div></div>';
+        $ruleDetailPanel.append(_html);
+        $ruleDetailPanel.find('div.panel-heading').html(detailData.title);
+        $ruleDetailPanel.find('div.sub-content').html(detailData.htmlCont);
+        PageManage.gotoPage($ruleDetailPanel, $mainMenu);
+      } else {
+        pageMsg({msg:"请求规则详情异常：" + result.status, type:0, showMask:true});
+      }
+    });
   }
   // 显示个人信息面板
   function logoEvent(e){
