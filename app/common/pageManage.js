@@ -99,7 +99,6 @@ var PageManage = {
 	createAppHead: function($target_dom){
 		var p_id = '',
 	    _html = '';
-
 	    if ($target_dom == null){
 	      return false;
 	    }
