@@ -22,22 +22,55 @@ SearchManage = {
 
 // 跳转至搜索页面
 function toSearchEvent(){
-
+	var $target = $('#search-info'),
+	    $this = $(this),
+	    parent_id = $this.attr('data-parentId'),
+	    $main = $('#' + parent_id);
+    PageManage.gotoPage($target, $main);
 }
 
 // 取消搜索结果
 function removeSearchEvent(){
-
+	var $this = $(this),
+	    $searchInput = $this.prev('input'),
+	    $backIndex = $this.parents('.navbar').find('#back-index'),
+	    $searchSubmit = $this.parents('.navbar').find('#search-submit');
+    if ($searchInput.val() == ''){
+      return false;
+    }
+    $searchInput.val('');
+    $backIndex.show();
+    $searchSubmit.hide();
+    $this.addClass('hidden');
 }
 
 // 监听搜索内容
 function watchInputEvent(){
-
+	var $this = $(this),
+    $closeBtn = $this.next('.search-close'),
+    $backIndex = $this.parents('.navbar').find('#back-index'),
+    $searchSubmit = $this.parents('.navbar').find('#search-submit');
+    if ($this.val().length == 0){
+      $backIndex.show();
+      $searchSubmit.hide();
+      if (!$closeBtn.hasClass('hidden')){
+        $closeBtn.addClass('hidden');
+      }
+    }else if( $backIndex.is(':visible') ){
+      $backIndex.hide();
+      $searchSubmit.show();
+      $closeBtn.removeClass('hidden');
+      return false;
+    }
 }
 
 // 提交搜索结果
 function searchBtnEvent(){
-	
+	var $this = $(this),
+    	val = '';
+    val = $this.prevAll('.form-group').find('input').val();
+    alert('显示搜索结果');
+    // searchEvent(val);
 }
 
 module.exports = SearchManage;

@@ -7,6 +7,7 @@ $(function(){
       $paenlWrapper = $('#paenl_wrapper'),
       $loadingGif = $('#loading'),
       PageManage = require('../common/pageManage.js'),
+      SearchManage = require('../common/searchManage.js'),
   	  Client = require('../utils/client.js');
   var ADMIN_URL = 'http://localhost:8001';
   // 初始化函数
@@ -44,6 +45,7 @@ $(function(){
       if (result && !result.error){
         $loadingGif.hide();
         showMainPanel({"activeType":"rule", "datas":result.rules});
+        SearchManage.init();
       } else {
         pageMsg({msg:"请求规则数据异常：" + result.status, type:0, showMask:true});
       }
