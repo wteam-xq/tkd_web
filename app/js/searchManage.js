@@ -1,11 +1,13 @@
 // 搜索公共脚本（依赖jquery）
 var SearchManage = null,
 	PageManage = require('../common/pageManage.js');
+var $body = null;
 
 SearchManage = {
 	$searchInfo: null,
 	init: function(){
 		var This = this;
+    $body = $('body');
 		this.$searchInfo = $('#search-info');
 		this.initEvt();
 	},

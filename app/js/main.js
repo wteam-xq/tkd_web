@@ -7,7 +7,7 @@ $(function(){
       $paenlWrapper = $('#paenl_wrapper'),
       $loadingGif = $('#loading'),
       PageManage = require('../common/pageManage.js'),
-      SearchManage = require('../common/searchManage.js'),
+      SearchManage = require('./searchManage.js'),
   	  Client = require('../utils/client.js');
   var ADMIN_URL = 'http://localhost:8001';
   // 初始化函数

@@ -20,6 +20,7 @@
 * [跨域解决方案汇总](http://www.cnblogs.com/think/archive/2010/06/23/1763616.html)
 * 2016-02-18 问题：为什么jq ajax请求总是不能CORS跨域，而原生xhr对象请求能成功？
 * 解决：因为使用jquery时的URL没写对，`ADMIN_URL = 'localhost:8001'`改成`ADMIN_URL = 'http://localhost:8001'`
+* 2016-04-24 加入单页面路由机制，研究angular.js实现原理；
 
 
 ### 遗留bug:
