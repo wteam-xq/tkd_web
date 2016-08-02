@@ -8,7 +8,7 @@
 * 2016-02-25 CSS Sprites，base64编码 理解: 1.[css Sprites](http://baike.baidu.com/link?url=lN45Y6tRGnuyJd8FxIJeWCKnBk90DwgGNiz4k2B653lqSURYfobyS1GIkkRSNDAdvlbWWL7GGFjXAsMXotdNrK)就是我们说的雪碧图啦；2.css base64, 图片直接存储在样式表中；
 * base 64优点： 1.减少了HTTP请求； 2.避免文件跨域的问题； 3.解决没有图片更新要重新上传，还要清理缓存的问题；
 缺点：1.ie6 ie7不支持；2.增加了CSS文件的尺寸；（ase64编码图片本质上是将图片的二进制大小以一些字母的形式展示，例如一个1024字节的图片，base64编码后至少1024个字符，这个大小会被完全嵌入到CSS文件中）
-* 2016-03-08 搜索公共模块功能开发；
+* 2016-03-08 搜索公共模块功能开发；（待完成）
 
 ### 开发日志
 * 2016-02-14 

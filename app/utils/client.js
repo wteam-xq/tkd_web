@@ -1,3 +1,4 @@
+// 用户使用设备 检测工具类
 var client = function() {
     //呈现引擎
     var engine = {
