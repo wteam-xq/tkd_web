@@ -20,7 +20,7 @@ $(function(){
         loadingGif = require('../images/loading.gif');
     var _supportImg = document.createElement('img'),
         _loadingGif = document.createElement('img');
-    var ajaxOptions = null, serviceResourceUrl = 
+    var ajaxOptions = null, serviceResourceUrl =
     // 低版本浏览器时出现提示
     browser = Client.browser;
   	// 引入图片
@@ -94,16 +94,16 @@ $(function(){
   // 主面板显示规则UI
   function showRuleContent(data){
     var ruleList = data.ruleList,
-        i, len, ruleObj = null, 
+        i, len, ruleObj = null,
         itemHtml, itemHtmls = '';
     var $rule = $('#rule');
     $rule.empty();
     for(var i = 0, len = ruleList.length; i < len; i++){
       ruleObj = ruleList[i];
-      itemHtml = '<a href="##" title="'+ ruleObj.title +'" class="list-group-item list-group-item-warning" data-id="' + ruleObj._id + '">' + 
-        '<img class="pull-left list-item-img" src="' + ADMIN_URL + ruleObj.ico + '" alt="' + ruleObj.title + '" >' + 
-        '<h3 class="list-group-item-heading">' + ruleObj.title + '</h3>' + 
-        '<p class="list-group-item-text">' + ruleObj.desc + '</p>' + 
+      itemHtml = '<a href="##" title="'+ ruleObj.title +'" class="list-group-item list-group-item-warning" data-id="' + ruleObj._id + '">' +
+        '<img class="pull-left list-item-img" src="' + ADMIN_URL + ruleObj.ico + '" alt="' + ruleObj.title + '" >' +
+        '<h3 class="list-group-item-heading">' + ruleObj.title + '</h3>' +
+        '<p class="list-group-item-text">' + ruleObj.desc + '</p>' +
       '</a>';
       itemHtmls += itemHtml;
     }
@@ -171,7 +171,7 @@ $(function(){
    *   @param {boolean} options.showMask 是否显示遮罩层
    */
   function pageMsg(options){
-      var $pageTipsMsg = null, 
+      var $pageTipsMsg = null,
           ts = parseInt( (new Date().getTime())/1000, 10 ),
           tipType = options.type?options.type: '0',
           className = options.className?options.className: '';
@@ -194,7 +194,7 @@ $(function(){
       setTimeout(function (){
           $pageTipsMsg.animate({
               'opacity': 0
-          }, 1000, 
+          }, 1000,
           function (){
               $pageTipsMsg.prev('.a_r_guard_mask').remove();
               $pageTipsMsg.remove();

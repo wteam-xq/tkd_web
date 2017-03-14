@@ -11,7 +11,7 @@
 * 2016-03-08 搜索公共模块功能开发；（待完成）
 
 ### 开发日志
-* 2016-02-14 
+* 2016-02-14
 * webpack 加载css文件，首页的dom节点短时间内会有闪烁问题
 * 解决：首页dom起始隐藏；
 * 问题：出现跨域提示
@@ -22,5 +22,9 @@
 * 解决：因为使用jquery时的URL没写对，`ADMIN_URL = 'localhost:8001'`改成`ADMIN_URL = 'http://localhost:8001'`
 * 2016-04-24 加入单页面路由机制，研究angular.js实现原理；
 
+
+* 2017-03-14
+* 升级webpack 2.0, [参考网址：](http://www.css88.com/doc/webpack2/guides/migrating/)
+* `npm install webpack@<version> --save-dev` - 指定webpack版本安装；
 
 ### 遗留bug:

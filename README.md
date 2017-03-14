@@ -9,9 +9,7 @@
 
 * 运行：到项目下执行指令(配置指令请看package.json)：
  ```
- 
 npm run dev
-
  ```
 * 然后浏览器输入：loalhost:8080
 
