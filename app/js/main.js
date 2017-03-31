@@ -209,9 +209,9 @@ $(function(){
       }
   }
   // 全局变量
-  window.tkdGlobalObj = {
+  window.TkdFaqTest = {
     testPageMsg: function(){
-      pageMsg({msg:"测试内容。。。", type:0, showMask:true});
+      pageMsg({msg:"测试内容!", type:0, showMask:true}); 
     }
   };
 });

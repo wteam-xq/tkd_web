@@ -7,13 +7,13 @@ SearchManage = {
 	$searchInfo: null,
 	init: function(){
 		var This = this;
-    $body = $('body');
+    	$body = $('body');
 		this.$searchInfo = $('#search-info');
 		this.initEvt();
 	},
 	initEvt: function(){
 		var $searchInfo = this.$searchInfo;
-		// on 实现 live(第二个参数带上筛选器即可)  
+		// on 实现 live(第二个参数带上筛选器即可)
     	$body.on('focus', 'input.input-search', toSearchEvent);
     	//搜索框点击事件
 	    $searchInfo.find('.search-close').on('click', removeSearchEvent);
